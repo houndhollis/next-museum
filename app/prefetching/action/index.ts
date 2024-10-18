@@ -10,8 +10,7 @@ export const getPrefechingData = async (
       const filterdData: ParentProductItem[] = dummyData.filter(
         (item) => item.parentId === id
       );
-      console.log(filterdData);
       resolve(filterdData);
-    }, 1000);
+    }, 100);
   });
 };
