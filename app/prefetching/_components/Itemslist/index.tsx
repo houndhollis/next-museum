@@ -1,23 +1,33 @@
 "use client";
 
 import Tabs from "../Tabs";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getPrefechingData } from "../../action";
-import ItemDetail from "../ItemDetail";
 import { useEffect } from "react";
+import ItemDetail from "../ItemDetail";
 import { ParentProductItem } from "../../type";
+import { getPrefechingData } from "../../action";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Tab } from "../../mock/tabData";
 
 export default function Itemslist({ id = "1" }: { id: string }) {
   const queryClient = useQueryClient();
+  const tabLength = Tab.length;
 
   useEffect(() => {
+    const prevId = Number(id) - 1;
     const nextId = Number(id) + 1;
-    queryClient.prefetchQuery({
-      queryKey: ["prefetching", nextId.toString()],
-      queryFn: () => {
-        return getPrefechingData(nextId);
-      },
-    });
+    if (prevId > 0) {
+      queryClient.prefetchQuery({
+        queryKey: ["prefetching", prevId.toString()],
+        queryFn: () => getPrefechingData(prevId),
+      });
+    }
+
+    if (nextId <= tabLength) {
+      queryClient.prefetchQuery({
+        queryKey: ["prefetching", nextId.toString()],
+        queryFn: () => getPrefechingData(nextId),
+      });
+    }
   }, [id, queryClient]);
 
   const { data, isLoading } = useQuery<ParentProductItem[]>({
