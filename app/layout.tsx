@@ -3,6 +3,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ReactQueryProvider } from "./configs/ReactQueryProvider";
 import Header from "./components/Header";
+import dynamic from "next/dynamic";
+
+const Layout = dynamic(() => import("./components/Layout"), {
+  ssr: false,
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +37,7 @@ export default function RootLayout({
       >
         <ReactQueryProvider>
           <Header />
-          {children}
+          <Layout>{children}</Layout>
         </ReactQueryProvider>
       </body>
     </html>
