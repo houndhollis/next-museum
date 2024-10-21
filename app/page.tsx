@@ -11,6 +11,9 @@ export default function Home() {
         <Link href={"/dispatch"} className="text-[18px] font-bold">
           Dispatch
         </Link>
+        <Link href={"design"} className="text-[18px] font-bold">
+          Design
+        </Link>
       </div>
     </main>
   );

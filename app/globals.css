@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-size: 62.5%;
+  }
+}
+/*
+  rem 단위 하는 이유는,
+  px은 고정 값으로 그 크기가 변하지 않는다. 
+  고정값은 웹 접근성 측면에서 문제가 될 수 있다. 
+  브라우저 설정을 통해 확대 해놓을수가 있는데 단위가 px일 경우 확대 설정이
+  적용되지 않는 문제가 있다 그래서 rem 초기설정이 필요하다
+  기본 브라우저의 글꼴 크기는 16px 이다.
+  즉 1rem = 16px 이 되기 때문에 계산기 번거로워서 바꾸는 과정을 거쳤다
+
+  가장 많이 사용하는 %이다.
+  62.5% 일 경우 브라우저 기본 글꼴이 10px 되어 16px 은 1.6rem으로 적용할 수 있게 된다.
+  1.6rem = 16px
+
+*/
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
