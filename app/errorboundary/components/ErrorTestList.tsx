@@ -1,14 +1,20 @@
 "use client";
 
-import { useQuery, useSuspenseQuery } from "@tanstack/react-query";
-import { onClickError } from "../action/errorAction";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 export default function ErrorTestList() {
+  const onErrorTest = () => {
+    throw new Error("error");
+  };
+
   const { data } = useSuspenseQuery({
-    queryKey: ["errorTest"],
-    queryFn: () => onClickError(),
+    queryKey: ["data2"],
+    queryFn: () => onErrorTest(),
   });
 
+  if (!data) {
+    return;
+  }
   return (
     <div>
       <h1 className="text-white text-2xl">에러테스트</h1>
