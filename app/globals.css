@@ -7,6 +7,12 @@
     font-size: 62.5%;
   }
 }
+
+@layer utilities {
+  .transition-transform {
+    transition: 0.5s transform ease;
+  }
+}
 /*
   rem 단위 하는 이유는,
   px은 고정 값으로 그 크기가 변하지 않는다. 
