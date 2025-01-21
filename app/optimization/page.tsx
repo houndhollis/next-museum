@@ -29,7 +29,7 @@ export default function Page() {
         <h1 className="text-white font-bold text-2xl">Transform 최적화</h1>
         <div
           style={{ transform: `scaleX(${percent / 100})` }}
-          className="absolute top-[40px] left-0 w-full rounded origin-left transition-transform h-[3px] bg-white will-change-transform"
+          className="absolute left-0 w-full rounded origin-left transition-transform h-[3px] bg-white will-change-transform"
         />
       </div>
       <div className="mt-3">
